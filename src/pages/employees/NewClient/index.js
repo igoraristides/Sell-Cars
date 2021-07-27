@@ -17,6 +17,7 @@ import Input from "../../../components/Input";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../../services/api";
 
+//Cadastrar Cliente
 const NewClient = () => {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
@@ -50,14 +51,10 @@ const NewClient = () => {
       telefone,
       celular,
     };
-    console.log(data);
-    try {
-      api.post("client", data);
-      alert("Cadastro realizado com sucesso");
-      history.push("/emplo");
-    } catch {
-      alert("Não foi possível realizar do cliente");
-    }
+
+    api.post("client", data);
+    alert("Cadastro realizado com sucesso");
+    history.push("/emplo");
   }
 
   const formRef = useRef(null);
@@ -219,7 +216,6 @@ const NewClient = () => {
           </Column>
         </Row>
         <Column>
-          \\
           <Content>
             <Save type="submit">Salvar</Save>
           </Content>

@@ -66,32 +66,6 @@ const Admin = () => {
           />
         </Form>
       </Section>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>ID</StyledTableCell>
-              <StyledTableCell align="center">Nome</StyledTableCell>
-              <StyledTableCell align="center">Função</StyledTableCell>
-              <StyledTableCell align="center">
-                Quantidade de Vendas
-              </StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.id}>
-                <StyledTableCell component="th" scope="row">
-                  {row.id}
-                </StyledTableCell>
-                <StyledTableCell align="center">{row.name}</StyledTableCell>
-                <StyledTableCell align="center">{row.job}</StyledTableCell>
-                <StyledTableCell align="center">{row.sale}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
     </Container>
   );
 };

@@ -16,6 +16,7 @@ import Input from "../../../components/Input";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../../services/api";
 
+//CadastrarCarro
 const NewCar = () => {
   const [nome, setNome] = useState("");
   const [ano, setAno] = useState("");
@@ -63,14 +64,9 @@ const NewCar = () => {
       volanteMultifuncional,
       controleDeEstabilidade,
     };
-    console.log(data);
-    try {
-      api.post("car", data);
-      alert("Cadastro do carro realizado com sucesso");
-      history.push("/admin");
-    } catch {
-      alert("Não foi possível realizar o cadastro do automóvel");
-    }
+
+    api.post("car", data);
+    history.push("/admin");
   }
 
   const formRef = useRef(null);
