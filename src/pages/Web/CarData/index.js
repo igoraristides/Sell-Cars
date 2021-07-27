@@ -14,7 +14,7 @@ const CarData = () => {
   useEffect(() => {
     api
       .get(`car/${id}`)
-      .then((response) => setCar(response.data))
+      .then((response) => setCar(response.data[0]))
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);
       });
