@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -22,14 +22,13 @@ export const SubTitle = styled.h1`
   margin: 0;
   line-height: 1.15;
   font-size: 30px;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin: 20px;
 `;
 
 export const Text = styled.p`
-color: #000;
-font-size: 30px;
-`
+  color: #000;
+  font-size: 30px;
+`;
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
@@ -55,22 +54,30 @@ export const TextButton = styled.p`
   width: 100%;
 `;
 
-export const Exit = styled.div`
+export const Exit = styled.button`
   display: flex;
   flex-direction: row;
   margin-top: 10px;
   background: red;
   width: 30%;
   border-radius: 30px;
-  text-align: center;
+  font-weight: 500;
+  font-size: 30px;
+  color: #000;
+  justify-content: center;
+  padding: 10px;
 `;
 
-export const Save = styled.div`
+export const Save = styled.button`
   display: flex;
-  flex-direction: row;
   margin-top: 10px;
   background: green;
   width: 30%;
   border-radius: 30px;
-  text-align: center;
+  font-weight: 500;
+  font-size: 30px;
+  color: #000;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
 `;

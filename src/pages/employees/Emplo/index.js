@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Container, Section } from "./styles";
 import Input from "../../../components/Input";
 import Form from "../../../components/Form";
@@ -10,6 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import api from "../../../services/api";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -32,24 +33,24 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-function createData(id, idcar, car, price, buyer) {
-  return { id, idcar, car, price, buyer };
-}
-
-const rows = [
-  createData(1, 124, "Onix", "R$71.920,00", "Gabriel"),
-  createData(2, 124, "Onix", "R$71.920,00", "Gabriel"),
-  createData(3, 124, "Onix", "R$71.920,00", "Gabriel"),
-  createData(4, 124, "Onix", "R$71.920,00", "Gabriel"),
-];
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
-
 const Emplo = () => {
+  const [client, setClient] = useState([]);
+  console.log(client);
+  useEffect(() => {
+    api
+      .get("client")
+      .then((response) => setClient(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
+  const useStyles = makeStyles({
+    table: {
+      minWidth: 700,
+    },
+  });
+
   const formRef = useRef(null);
   const classes = useStyles();
   return (
@@ -58,7 +59,7 @@ const Emplo = () => {
         <Form width={350} ref={formRef}>
           <Input
             name="search"
-            placeholder="Busque uma venda"
+            placeholder="Busque um cliente"
             variant="border"
             fullWidth
           />
@@ -68,23 +69,35 @@ const Emplo = () => {
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>ID</StyledTableCell>
-              <StyledTableCell align="center">Código Carro</StyledTableCell>
-              <StyledTableCell align="center">Carro</StyledTableCell>
-              <StyledTableCell align="center">Preço</StyledTableCell>
-              <StyledTableCell align="center">Comprador</StyledTableCell>
+              <StyledTableCell>Nome</StyledTableCell>
+              <StyledTableCell align="center">Sobrenome</StyledTableCell>
+              <StyledTableCell align="center">CPF</StyledTableCell>
+              <StyledTableCell align="center">RG</StyledTableCell>
+              <StyledTableCell align="center">Telefone</StyledTableCell>
+              <StyledTableCell align="center">Celular</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.id}>
+            {client.map((client) => (
+              <StyledTableRow key={client.idCliente}>
                 <StyledTableCell component="th" scope="row">
-                  {row.id}
+                  {client.nomeCliente}
                 </StyledTableCell>
-                <StyledTableCell align="center">{row.idcar}</StyledTableCell>
-                <StyledTableCell align="center">{row.car}</StyledTableCell>
-                <StyledTableCell align="center">{row.price}</StyledTableCell>
-                <StyledTableCell align="center">{row.buyer}</StyledTableCell>
+                <StyledTableCell align="center">
+                  {client.sobrenomeCliente}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {client.cpfCliente}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {client.rgCliente}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {client.telefoneCliente}
+                </StyledTableCell>
+                <StyledTableCell align="center">
+                  {client.celularCliente}
+                </StyledTableCell>
               </StyledTableRow>
             ))}
           </TableBody>

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Container, Section, Filter, Aux } from "./styles";
 import Input from "../../../components/Input";
 import Form from "../../../components/Form";
@@ -7,8 +7,21 @@ import filter from "../../../assets/icons/filter.svg";
 import { Link } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 
+import api from "../../../services/api";
+
 const Catalog = () => {
   const formRef = useRef(null);
+  const [car, setCar] = useState([]);
+  console.log(car);
+  useEffect(() => {
+    api
+      .get("car")
+      .then((response) => setCar(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
   return (
     <Container>
       <Section>
@@ -24,46 +37,13 @@ const Catalog = () => {
       </Section>
       <Section>
         <Grid container spacing={2}>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
-          <Grid item xs={3}>
-            <Link to={`/car`}>
-              <Card />
-            </Link>
-          </Grid>
+          {car.map((car) => (
+            <Grid key={car.idCarro} item xs={12} md={4}>
+              <Link to={`/car/${car.idCarro}`}>
+                <Card data={car} />
+              </Link>
+            </Grid>
+          ))}
         </Grid>
       </Section>
     </Container>

@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/onix.jpg";
+import Logo from "../../assets/default.jpg";
 
 import {
   Container,
@@ -12,17 +12,20 @@ import {
   Price,
 } from "./styles";
 
-const CardGrid = () => {
+const CardGrid = (data) => {
+  console.log(data);
   return (
     <Container>
       <CarIcon src={Logo} />
       <Content>
         <CarBox>
-          <CarName>Onix</CarName>
-          <CarDescription>Chevrolet</CarDescription>
+          <CarName>{data.data.nomeCarro}</CarName>
+          <CarDescription>{data.data.marca}</CarDescription>
         </CarBox>
-        <CarDescription2>Seminovo, 2015</CarDescription2>
-        <Price>R$71.920,00</Price>
+        <CarDescription2>
+          {data.data.situacao}, {data.data.ano}
+        </CarDescription2>
+        <Price>R${data.data.preco}</Price>
       </Content>
     </Container>
   );
