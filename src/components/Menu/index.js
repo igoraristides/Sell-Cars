@@ -11,7 +11,7 @@ const links = [
     to: "/",
     label: "Catálogo",
   },
-  
+
   {
     to: "/review",
     label: "Revisão",
@@ -24,19 +24,20 @@ const links = [
     to: "/invoice",
     label: "2ª via nota fiscal",
   },
-  
 ];
 
 const Menu = () => {
   return (
     <>
       <Container>
+        <Navigation>
           <Logo src={logo} />
           <Section>
-        {links.map(({ to, label }) => (
-            <Link key={to} to={to} label={label} className="link" />
-          ))}
-        </Section>
+            {links.map(({ to, label }) => (
+              <Link key={to} to={to} label={label} className="link" />
+            ))}
+          </Section>
+        </Navigation>
       </Container>
     </>
   );

@@ -5,6 +5,7 @@ import Form from "../../../components/Form";
 import Card from "../../../components/Card";
 import filter from "../../../assets/icons/filter.svg";
 import { Link } from "react-router-dom";
+import { Grid } from "@material-ui/core";
 
 const Catalog = () => {
   const formRef = useRef(null);
@@ -22,21 +23,48 @@ const Catalog = () => {
         <Filter src={filter}></Filter>
       </Section>
       <Section>
-        <Link to={`/car`}>
-          <Card />
-        </Link>
-        <Link to={`/car`}>
-          <Card />
-        </Link>
-        <Link to={`/car`}>
-          <Card />
-        </Link>
-        <Link to={`/car`}>
-          <Card />
-        </Link>
-        <Link to={`/car`}>
-          <Card />
-        </Link>
+        <Grid container spacing={2}>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+          <Grid item xs={3}>
+            <Link to={`/car`}>
+              <Card />
+            </Link>
+          </Grid>
+        </Grid>
       </Section>
     </Container>
   );

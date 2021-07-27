@@ -2,9 +2,10 @@ import React from "react";
 import logo from "../../assets/logo.png";
 
 import Avatar from "../Avatar";
+import { Navigation } from "../Menu/styles";
 import Link from "./Link";
 
-import { Container, Centralize, Logo, Section } from "./styles";
+import { Container, Centralize, Logo, Section, Aux } from "./styles";
 
 const links = [
   {
@@ -29,15 +30,19 @@ const MenuEmplo = () => {
   return (
     <>
       <Container>
-        <Logo src={logo} />
-        <Section>
-          {links.map(({ to, label }) => (
-            <Link key={to} to={to} label={label} className="link" />
-          ))}
-          <Centralize>
-            <Avatar />
-          </Centralize>
-        </Section>
+        <Navigation>
+          <Logo src={logo} />
+          <Aux>
+            <Section>
+              {links.map(({ to, label }) => (
+                <Link key={to} to={to} label={label} className="link" />
+              ))}
+              <Centralize>
+                <Avatar />
+              </Centralize>
+            </Section>
+          </Aux>
+        </Navigation>
       </Container>
     </>
   );

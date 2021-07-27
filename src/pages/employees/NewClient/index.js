@@ -1,5 +1,16 @@
 import React, { useRef } from "react";
-import { Container, Title, Row, Text, Column, SubTitle, Content, Exit, Save, TextButton } from "./styles";
+import {
+  Container,
+  Title,
+  Row,
+  Text,
+  Column,
+  SubTitle,
+  Content,
+  Exit,
+  Save,
+  TextButton,
+} from "./styles";
 import Form from "../../../components/Form";
 import Input from "../../../components/Input";
 import { Link } from "react-router-dom";
@@ -93,20 +104,20 @@ const NewClient = () => {
       </Form>
       <Column>
         <Link to={`/emplo`}>
-        <Content>
-          <Save>
-            <TextButton>Salvar</TextButton>
-          </Save>
-        </Content>
+          <Content>
+            <Save>
+              <TextButton>Salvar</TextButton>
+            </Save>
+          </Content>
         </Link>
         <Link to={`/emplo`}>
-        <Content>
-          <Exit>
-            <TextButton>Cancelar</TextButton>
-          </Exit>
-        </Content>
+          <Content>
+            <Exit>
+              <TextButton>Cancelar</TextButton>
+            </Exit>
+          </Content>
         </Link>
-        </Column>
+      </Column>
     </Container>
   );
 };
